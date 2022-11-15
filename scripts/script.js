@@ -22,6 +22,8 @@ async function fetchIt(query, term = "search?") {
   let data = await res.json();
   console.log(data);
   ResultShow(data);
+  spinner.classList.add("visually-hidden");
+
 }
 function ResultShow(data) {
   for (let i = 0; i < data.length; i++) {

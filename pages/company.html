@@ -11,16 +11,26 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
-    <div>
-      <div id="title"></div>
-      <img id="pic" src="" alt="" />
-      <p id="describe"></p>
-      <a id="site" href=""></a>
-      <p id="price"></p>
-      <span id="percentage"></span>
+    <div class="container mt-5 mb-5 shadow-lg p-5 bg-white rounded">
+      <div class="d-flex justify-content-start mb-5">
+        <img class="" id="pic" src="" alt="" />
+        <div class="text-center display-4 ms-5" id="title"></div>
+      </div>
+      <div class="fs-3 mb-5">
+        <span id="price"></span>
+        <span id="percentage"></span>
+      </div>
+      <p class="fs-5" id="describe"></p>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-info"><a class="text-decoration-none text-center text-light border border-info fs-5" id="site" href=""></a></button></div>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="../scripts/company.js"></script>
   </body>
 </html>
