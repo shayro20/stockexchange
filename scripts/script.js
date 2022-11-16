@@ -62,29 +62,8 @@ function ResultShow(srchArr) {
     container.append(elmentLink);
     container.append(symbolAndChngeContainer)
     symbolAndChngeContainer.append(elmentSymbol,elmentChange)
-    // container.append(elmentSymbol);
-    // container.append(elmentChange);
+
   }
   spinner.classList.add("visually-hidden");
 }
 
-// const image = data.profile.image;
-// const link = data.profile.website;
-// const change = data.profile.changesPercentage;
-// stock.innerHTML = `Stock Price: $`+stockprice;
-// if (change > 0) {
-//   prcntChange.innerHTML = `(+${change}` + `%)`;
-//   prcntChange.classList.add("text-success");
-// } else {
-//   prcntChange.innerHTML = `(-${change}` + `%)`;
-//   prcntChange.classList.add("text-danger");
-// }
-
-// stock.innerHTML = `Stock Price: $` + stockprice;
-// if (change > 0) {
-//   prcntChange.innerHTML = `(+${change}` + `%)`;
-//   prcntChange.classList.add("text-success");
-// } else {
-//   prcntChange.innerHTML = `(-${change}` + `%)`;
-//   prcntChange.classList.add("text-danger");
-// }
