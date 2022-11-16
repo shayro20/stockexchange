@@ -22,27 +22,23 @@ async function fetchIt(query, term = "search?") {
   searchParm.set("query", query);
   let res = await fetch(baseUrl + term + searchParm.toString(), {});
   let data = await res.json();
-  console.log(data);
-  getFace(data);
+  for (let i = 0; i < data.length; i++) {
+    getFace(data[i].symbol);
+  }
 }
 
 async function getFace(info) {
-  let resultStyle = [];
-  for (let i = 0; i < info.length; i++) {
-    let res = await fetch(urlMe + info[i].symbol);
+    let res = await fetch(urlMe + info);
     let infoOne = await res.json();
-    resultStyle.push(infoOne);
     console.log(infoOne);
-  }
-  ResultShow(resultStyle);
-  console.log(resultStyle);
+    ResultShow(infoOne);
+  
 }
 function ResultShow(srchArr) {
-  for (let i = 0; i < srchArr.length; i++) {
-    const name = srchArr[i].profile.companyName;
-    const logo = srchArr[i].profile.image;
-    const symbol = srchArr[i].symbol;
-    const change = srchArr[i].profile.changesPercentage;
+    const name = srchArr.profile.companyName;
+    const logo = srchArr.profile.image;
+    const symbol = srchArr.symbol;
+    const change = srchArr.profile.changesPercentage;
     let changeNum = Number(change);
     const container = document.createElement("div");
     container.classList.add("border-bottom");
@@ -59,13 +55,13 @@ function ResultShow(srchArr) {
     const elmentLogo = document.createElement("img");
     elmentLogo.src = logo;
     const elmentLink = document.createElement("a");
-    elmentLink.href = "./pages/company.html?symbol=" + srchArr[i].symbol;
+    elmentLink.href = "./pages/company.html?symbol=" + srchArr.symbol;
     elmentLink.innerHTML = name;
     result.append(container);
     container.append(elmentLogo);
     container.append(elmentLink);
     container.append(symbolAndChngeContainer);
     symbolAndChngeContainer.append(elmentSymbol, elmentChange);
+    spinner.classList.add("visually-hidden");
   }
-  spinner.classList.add("visually-hidden");
-}
+

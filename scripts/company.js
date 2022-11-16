@@ -41,7 +41,9 @@ async function histroyFetch() {
   let historyData = await response.json();
   let history = historyData.historical;
   console.log(historyData);
-  chart(history);
+  setTimeout(() => {chart(history);
+    
+  }, 2000);
 }
 histroyFetch();
 
