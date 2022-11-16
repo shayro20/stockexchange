@@ -3,6 +3,8 @@ const result = document.getElementById("results");
 const spinner = document.getElementById("spinner");
 let baseUrl =
   "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/";
+const urlMe =
+  "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/";
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let stockSearch = form.getElementsByTagName("input")[0].value;
@@ -21,19 +23,68 @@ async function fetchIt(query, term = "search?") {
   let res = await fetch(baseUrl + term + searchParm.toString(), {});
   let data = await res.json();
   console.log(data);
-  ResultShow(data);
-  spinner.classList.add("visually-hidden");
+  getFace(data);
+}
 
-}
-function ResultShow(data) {
-  for (let i = 0; i < data.length; i++) {
-    const name = data[i].name;
-    const symbol = data[i].symbol;
-    const elmentNew = document.createElement("a");
-    elmentNew.href = "./pages/company.html?symbol="+data[i].symbol ;
-    elmentNew.innerHTML = `${name}(${symbol})`;
-    result.append(elmentNew);
-    elmentNew.classList.add("d-block");
-    spinner.classList.add("visually-hidden");
+async function getFace(info) {
+  let resultStyle = [];
+  for (let i = 0; i < info.length; i++) {
+    let res = await fetch(urlMe + info[i].symbol);
+    let infoOne = await res.json();
+    resultStyle.push(infoOne);
+    console.log(infoOne);
   }
+  ResultShow(resultStyle);
+  console.log(resultStyle);
 }
+function ResultShow(srchArr) {
+  for (let i = 0; i < srchArr.length; i++) {
+    const name = srchArr[i].profile.companyName;
+    const logo = srchArr[i].profile.image;
+    const symbol = srchArr[i].symbol;
+    const change = srchArr[i].profile.changesPercentage;
+    let changeNum =Number(change)
+    const container = document.createElement("div");
+    const symbolAndChngeContainer =document.createElement("div");
+    const elmentSymbol = document.createElement("span");
+    elmentSymbol.innerHTML = `(${symbol}l)`;
+    const elmentChange = document.createElement("span");
+    elmentChange.innerHTML =
+    changeNum > 0 ? `(+${changeNum.toFixed(2)}` + `%)` : `(${changeNum.toFixed(2)}` + `%)`;
+    elmentChange.classList = change > 0 ? "text-success" : "text-danger";
+    const elmentLogo = document.createElement("img");
+    elmentLogo.src = logo;
+    const elmentLink = document.createElement("a");
+    elmentLink.href = "./pages/company.html?symbol=" + srchArr[i].symbol;
+    elmentLink.innerHTML = name;
+    result.append(container);
+    container.append(elmentLogo);
+    container.append(elmentLink);
+    container.append(symbolAndChngeContainer)
+    symbolAndChngeContainer.append(elmentSymbol,elmentChange)
+    // container.append(elmentSymbol);
+    // container.append(elmentChange);
+  }
+  spinner.classList.add("visually-hidden");
+}
+
+// const image = data.profile.image;
+// const link = data.profile.website;
+// const change = data.profile.changesPercentage;
+// stock.innerHTML = `Stock Price: $`+stockprice;
+// if (change > 0) {
+//   prcntChange.innerHTML = `(+${change}` + `%)`;
+//   prcntChange.classList.add("text-success");
+// } else {
+//   prcntChange.innerHTML = `(-${change}` + `%)`;
+//   prcntChange.classList.add("text-danger");
+// }
+
+// stock.innerHTML = `Stock Price: $` + stockprice;
+// if (change > 0) {
+//   prcntChange.innerHTML = `(+${change}` + `%)`;
+//   prcntChange.classList.add("text-success");
+// } else {
+//   prcntChange.innerHTML = `(-${change}` + `%)`;
+//   prcntChange.classList.add("text-danger");
+// }

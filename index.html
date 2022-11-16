@@ -10,11 +10,12 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css">
     <title>Stocks</title>
   </head>
   <body>
     <div id="marquee"></div>
-    <div class="container mt-5 shadow-lg p-5 bg-white rounded">
+    <div class="container mt-5 shadow-lg p-5 px- bg-white rounded">
       <h2 class="mb-4 text-center display-4">Search Nasdaq Stock</h2>
       <div id="form">
         <form action="GET">
@@ -32,11 +33,27 @@
             >
               Search
             </button>
-        </div>
-        <div id="spinner" class="spinner-border text-primary d-block m-auto visually-hidden" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-          <div id="results"></div>
+          </div>
+          <div
+            id="spinner"
+            class="spinner-border text-primary d-block m-auto visually-hidden"
+            role="status"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div id="results">
+            <!-- <div>
+              <img src="" alt="picture" />
+              <a href="">company name</a>
+              <span>(symbol)</span>
+              <span>(stockChange)</span>
+            </div><div>
+              <img src="" alt="picture" />
+              <a href="">company name</a>
+              <span>(symbol)</span>
+              <span>(stockChange)</span>
+            </div> -->
+          </div>
         </form>
       </div>
     </div>

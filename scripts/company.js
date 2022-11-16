@@ -40,7 +40,7 @@ async function histroyFetch() {
   let response = await fetch(historyUrl + symbol + `?serietype=line`);
   let historyData = await response.json();
   let history = historyData.historical;
-  console.log(history);
+  console.log(historyData);
   chart(history);
 }
 histroyFetch();
@@ -72,4 +72,5 @@ function chart(arr) {
     options: {},
   };
   const myChart = new Chart(document.getElementById("myChart"), config);
+  document.getElementById("SpinnerTwo").classList.add("visually-hidden")
 }

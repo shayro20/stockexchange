@@ -1,3 +1,29 @@
+html {
+  padding-right: 400px;
+  padding-left: 400px;
+}
 #pic {
-width: 67px;
+  width: 67px;
+}
+#SpinnerTwo {
+  width: 450px;
+  height: 450px;
+}
+
+#results img {
+  width: 35px;
+  height: 35px;
+}
+#results a {
+  font-size: large;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#results > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
