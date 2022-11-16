@@ -43,14 +43,17 @@ function ResultShow(srchArr) {
     const logo = srchArr[i].profile.image;
     const symbol = srchArr[i].symbol;
     const change = srchArr[i].profile.changesPercentage;
-    let changeNum =Number(change)
+    let changeNum = Number(change);
     const container = document.createElement("div");
-    const symbolAndChngeContainer =document.createElement("div");
+    container.classList.add("border-bottom")
+    const symbolAndChngeContainer = document.createElement("div");
     const elmentSymbol = document.createElement("span");
     elmentSymbol.innerHTML = `(${symbol}l)`;
     const elmentChange = document.createElement("span");
     elmentChange.innerHTML =
-    changeNum > 0 ? `(+${changeNum.toFixed(2)}` + `%)` : `(${changeNum.toFixed(2)}` + `%)`;
+      changeNum > 0
+        ? `(+${changeNum.toFixed(2)}` + `%)`
+        : `(${changeNum.toFixed(2)}` + `%)`;
     elmentChange.classList = change > 0 ? "text-success" : "text-danger";
     const elmentLogo = document.createElement("img");
     elmentLogo.src = logo;
@@ -60,10 +63,8 @@ function ResultShow(srchArr) {
     result.append(container);
     container.append(elmentLogo);
     container.append(elmentLink);
-    container.append(symbolAndChngeContainer)
-    symbolAndChngeContainer.append(elmentSymbol,elmentChange)
-
+    container.append(symbolAndChngeContainer);
+    symbolAndChngeContainer.append(elmentSymbol, elmentChange);
   }
   spinner.classList.add("visually-hidden");
 }
-
