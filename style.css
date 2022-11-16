@@ -27,3 +27,6 @@ html {
   justify-content: flex-start;
   align-items: center;
 }
+.text-change{
+  font-size: smaller;
+}

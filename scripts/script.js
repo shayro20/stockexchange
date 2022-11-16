@@ -45,8 +45,9 @@ function ResultShow(srchArr) {
     const change = srchArr[i].profile.changesPercentage;
     let changeNum = Number(change);
     const container = document.createElement("div");
-    container.classList.add("border-bottom")
+    container.classList.add("border-bottom");
     const symbolAndChngeContainer = document.createElement("div");
+    symbolAndChngeContainer.classList.add("text-change")
     const elmentSymbol = document.createElement("span");
     elmentSymbol.innerHTML = `(${symbol}l)`;
     const elmentChange = document.createElement("span");
