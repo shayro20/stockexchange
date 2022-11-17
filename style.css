@@ -1,6 +1,6 @@
-html {
-  padding-right: 400px;
-  padding-left: 400px;
+#resizing {
+  padding-right: 250px;
+  padding-left: 250px;
 }
 #pic {
   width: 67px;
@@ -27,6 +27,42 @@ html {
   justify-content: flex-start;
   align-items: center;
 }
-.text-change{
+.text-change {
   font-size: smaller;
+}
+
+.para {
+  color: black;
+  font-weight: bold;
+  white-space: nowrap;
+  clear: both;
+  float: left;
+}
+/* marquee */
+#marge {
+  margin-right: 10px;
+}
+.marquee-alternative {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-content {
+  margin: 0;
+  width: max-content;
+}
+
+@keyframes marquee-right-to-left {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-alternative div {
+    animation: marquee-right-to-left 300s linear infinite;
+  }
 }

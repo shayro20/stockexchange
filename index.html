@@ -10,51 +10,54 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>Stocks</title>
+    <link
+      rel="shortcut icon"
+      type="image/jpg"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDU3F_r2DmwWOPHDnRL-eMY4N-gGFBpu5YrA&usqp=CAU"
+    />
   </head>
   <body>
-    <div id="marquee"></div>
-    <div class="container mt-5 shadow-lg p-5 px- bg-white rounded">
-      <h2 class="mb-4 text-center display-4">Search Nasdaq Stock</h2>
-      <div id="form">
-        <form action="GET">
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              aria-label="Recipient's username"
-              aria-describedby="button-addon2"
-            />
-            <button
-              class="btn btn-outline-info"
-              type="submit"
-              id="button-addon2"
+    <div class="marquee-container">
+      <div class="marquee-alternative">
+        <div
+          id="marquee"
+          class="marquee-content"
+          style="animation-play-state: running"
+        ></div>
+      </div>
+    </div>
+    <div id="resizing">
+      <div class="container mt-5 shadow-lg p-5 px- bg-white rounded">
+        <h2 class="mb-4 text-center display-4">Search Nasdaq Stock</h2>
+        <div id="form">
+          <form action="GET">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+              />
+              <button
+                class="btn btn-outline-info"
+                type="submit"
+                id="button-addon2"
+              >
+                Search
+              </button>
+            </div>
+            <div
+              id="spinner"
+              class="spinner-border text-primary d-block m-auto visually-hidden"
+              role="status"
             >
-              Search
-            </button>
-          </div>
-          <div
-            id="spinner"
-            class="spinner-border text-primary d-block m-auto visually-hidden"
-            role="status"
-          >
-            <span class="visually-hidden">Loading...</span>
-          </div>
-          <div id="results">
-            <!-- <div>
-              <img src="" alt="picture" />
-              <a href="">company name</a>
-              <span>(symbol)</span>
-              <span>(stockChange)</span>
-            </div><div>
-              <img src="" alt="picture" />
-              <a href="">company name</a>
-              <span>(symbol)</span>
-              <span>(stockChange)</span>
-            </div> -->
-          </div>
-        </form>
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div id="results"></div>
+          </form>
+        </div>
       </div>
     </div>
     <script

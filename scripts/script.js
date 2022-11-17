@@ -1,8 +1,11 @@
 const form = document.querySelector("form");
 const result = document.getElementById("results");
 const spinner = document.getElementById("spinner");
+const marqueeText = document.getElementById("marquee");
+console.log(marqueeText);
 let baseUrl =
   "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/";
+marqueeFetch();
 const urlMe =
   "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/";
 form.addEventListener("submit", (e) => {
@@ -67,4 +70,25 @@ function ResultShow(srchArr) {
   container.append(symbolAndChngeContainer);
   symbolAndChngeContainer.append(elmentSymbol, elmentChange);
   spinner.classList.add("visually-hidden");
+}
+
+// marquee
+async function marqueeFetch() {
+  let markPonse = await fetch(baseUrl + "quotes/nyse");
+  let markData = await markPonse.json();
+  console.log(markData);
+  for (let z = 0; z < 200; z++) {
+    let mSymbol = markData[z].symbol;
+    let mPrice = markData[z].price;
+
+    const markP = document.createElement("span");
+    markP.innerHTML = `(${mPrice}$)`;
+    markP.classList = "text-success";
+    markP.setAttribute("id", "marge");
+    console.log(markP);
+    const markS = document.createElement("span");
+    markS.innerHTML = mSymbol;
+    marqueeText.append(markS);
+    marqueeText.append(markP);
+  }
 }
