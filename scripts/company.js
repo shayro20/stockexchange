@@ -31,7 +31,7 @@ async function getFace() {
     prcntChange.innerHTML = `(+${change}` + `%)`;
     prcntChange.classList.add("text-success");
   } else {
-    prcntChange.innerHTML = `(-${change}` + `%)`;
+    prcntChange.innerHTML = `(${change}` + `%)`;
     prcntChange.classList.add("text-danger");
   }
 }
