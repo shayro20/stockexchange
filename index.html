@@ -19,15 +19,11 @@
     />
   </head>
   <body>
-    <div class="marquee-container">
-      <div class="marquee-alternative">
-        <div
-          id="marquee"
-          class="marquee-content"
-          style="animation-play-state: running"
-        ></div>
-      </div>
-    </div>
+    <div
+      id="marquee"
+      class="marquee-content marquee-alternative marquee-container"
+      style="animation-play-state: running"
+    ></div>
     <div id="resizing">
       <div class="container mt-5 shadow-lg p-5 px- bg-white rounded">
         <h2 class="mb-4 text-center display-4">Search Nasdaq Stock</h2>
@@ -66,5 +62,10 @@
       crossorigin="anonymous"
     ></script>
     <script src="scripts/script.js"></script>
+    <script src="scripts/Marquee.js"></script>
+    <script>
+      const marquee = new Marquee(document.getElementById("marquee"));
+      marquee.marqueeFetch();
+    </script>
   </body>
 </html>
