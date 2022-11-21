@@ -1,3 +1,6 @@
+body{
+  overflow-x: hidden;
+}
 #resizing {
   padding-right: 250px;
   padding-left: 250px;
