@@ -1,5 +1,5 @@
 const webParameter = new URLSearchParams(window.location.search);
-let symbol = webParameter.get("symbol");
+const symbol = webParameter.get("symbol");
 const headLine = document.getElementById("title");
 const describe = document.getElementById("describe");
 const picture = document.getElementById("pic");
@@ -12,34 +12,35 @@ const historyUrl =
   "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/historical-price-full/";
 getFace();
 async function getFace() {
-  let res = await fetch(urlMe + symbol);
-  let data = await res.json();
+  const res = await fetch(urlMe + symbol);
+  const data = await res.json();
   console.log(data.profile);
   const name = data.profile.companyName;
   const image = data.profile.image;
   const description = data.profile.description;
   const link = data.profile.website;
   const stockprice = data.profile.price;
-  const change = data.profile.changesPercentage;
+  const change = Number(data.profile.changesPercentage);
+  const changeD = change.toFixed(2)
   headLine.innerHTML = name;
   picture.src = image;
   site.href = link;
   site.innerHTML = `Company Website`;
   describe.innerHTML = description;
   stock.innerHTML = `Stock Price: $`+stockprice;
-  if (change > 0) {
-    prcntChange.innerHTML = `(+${change}` + `%)`;
+  if (changeD > 0) {
+    prcntChange.innerHTML = `(+${changeD}` + `%)`;
     prcntChange.classList.add("text-success");
   } else {
-    prcntChange.innerHTML = `(${change}` + `%)`;
+    prcntChange.innerHTML = `(${changeD}` + `%)`;
     prcntChange.classList.add("text-danger");
   }
 }
 
 async function histroyFetch() {
-  let response = await fetch(historyUrl + symbol + `?serietype=line`);
-  let historyData = await response.json();
-  let history = historyData.historical;
+  const response = await fetch(historyUrl + symbol + `?serietype=line`);
+  const historyData = await response.json();
+  const history = historyData.historical;
   console.log(historyData);
   setTimeout(() => {chart(history);
     
@@ -62,7 +63,7 @@ function chart(arr) {
       },
     ],
   };
-  let scale = data.datasets[0].data;
+  const scale = data.datasets[0].data;
   for (let i = 0; i < arr.length; i++) {
     labels.push(arr[i].date);
     scale.push(arr[i].close);
@@ -74,5 +75,5 @@ function chart(arr) {
     options: {},
   };
   const myChart = new Chart(document.getElementById("myChart"), config);
-  document.getElementById("SpinnerTwo").classList.add("visually-hidden")
+  document.getElementById("spinner-two").classList.add("visually-hidden")
 }

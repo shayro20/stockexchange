@@ -8,11 +8,10 @@ body{
 #pic {
   width: 67px;
 }
-#SpinnerTwo {
+#spinner-two {
   width: 450px;
   height: 450px;
 }
-
 #results img {
   width: 35px;
   height: 35px;
@@ -24,7 +23,12 @@ body{
   margin-left: 1rem;
   margin-right: 1rem;
 }
-
+mark{
+  background-color: rgb(65, 174, 233);
+  padding: 0;
+  margin: 0;
+  border-radius: 25%;
+}
 #results > div {
   display: flex;
   justify-content: flex-start;
@@ -45,11 +49,6 @@ body{
 #marge {
   margin-right: 10px;
 }
-/* .marquee-alternative {
-  overflow: hidden;
-  width: 100%;
-} */
-
 #marquee {
   margin: 0;
   width: max-content;
@@ -57,7 +56,7 @@ body{
 
 @keyframes marquee-right-to-left {
   from {
-    transform: translateX(100vw);
+    transform: translateX(0vw);
   }
   to {
     transform: translateX(-100%);
@@ -68,4 +67,7 @@ body{
   #marquee {
     animation: marquee-right-to-left 300s linear infinite;
   }
+}
+.marked{
+  background-color: darkturquoise;
 }

@@ -19,11 +19,7 @@
     />
   </head>
   <body>
-    <div
-      id="marquee"
-      class="marquee-content marquee-alternative marquee-container"
-      style="animation-play-state: running"
-    ></div>
+    <div id="marquee" style="animation-play-state: running"></div>
     <div id="resizing">
       <div class="container mt-5 shadow-lg p-5 px- bg-white rounded">
         <h2 class="mb-4 text-center display-4">Search Nasdaq Stock</h2>
@@ -39,15 +35,16 @@
     ></script>
     <script src="scripts/Marquee.js"></script>
     <script src="scripts/serachform.js"></script>
-    <script src="scripts/script.js"></script>
     <script src="scripts/searchresult.js"></script>
     <script>
       const marquee = new Marquee(document.getElementById("marquee"));
-      marquee.marqueeFetch();
+      marquee.load();
       const formie = new SearchForm(document.getElementById("form"));
       formie.load();
       const resulti = new SearchResult(document.getElementById("results"));
-      resulti.loader();
+      formie.onSearch((companies) => {
+        resulti.renderResults(companies);
+      });
     </script>
   </body>
 </html>
