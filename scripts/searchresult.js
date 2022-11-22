@@ -1,5 +1,6 @@
 class SearchResult {
   constructor() {
+    this.input = document.getElementById("input");
     this.spinnerTake = document.getElementById("spinner");
     this.result = document.getElementById("results");
     this.baseUrl =
@@ -11,6 +12,7 @@ class SearchResult {
   }
   renderResults(str) {
     this.getFace(str);
+    console.log(this.input.value);
   }
   async getFace(info) {
     const res = await fetch(this.urlMe + info);
@@ -30,6 +32,7 @@ class SearchResult {
     const elmentChange = this.createPercentage(changeNum);
     const elmentLogo = this.createImg(logo);
     const elmentLink = this.createName(name, symbol);
+    console.log(elmentLink);
     const returns = {
       container,
       symbolAndChngeContainer,
@@ -50,6 +53,7 @@ class SearchResult {
   createSymbol(symbol) {
     const elmentSymbol = document.createElement("span");
     elmentSymbol.innerHTML = `(${symbol})`;
+    elmentSymbol.innerHTML = this.highlight(elmentSymbol);
     return elmentSymbol;
   }
   createPercentage(changeNum) {
@@ -70,14 +74,15 @@ class SearchResult {
     const elmentLink = document.createElement("a");
     elmentLink.href = "./pages/company.html?symbol=" + symbol;
     elmentLink.innerHTML = name;
+    elmentLink.innerHTML = this.highlight(elmentLink);
     return elmentLink;
   }
-  // highlight(inputValue) {
-  //   const put = inputValue.trim();
-  //   const re = new RegExp(`${put}`, "gi");
-  //   const highlightIt = elmentLink.innerHTML.replace(re, `<mark>$&</mark>`);
-  //   elmentLink.innerHTML = highlightIt;
-  // }
+  highlight(text) {
+    const put = this.input.value.trim();
+    const re = new RegExp(`${put}`, "gi");
+    const newText = text.innerHTML.replace(re, `<mark>$&</mark>`);
+    return newText;
+  }
   appendIt(obj) {
     this.result.append(obj.container);
     obj.container.append(obj.elmentLogo);
