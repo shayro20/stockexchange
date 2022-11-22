@@ -63,7 +63,6 @@ class SearchForm {
       e.preventDefault();
       const stockSearch =
         this.formContain.getElementsByTagName("input")[0].value;
-      console.log(stockSearch);
       this.fetchIt(stockSearch,callback);
       this.spin.classList.remove("visually-hidden");
     });
